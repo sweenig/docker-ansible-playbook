@@ -1,5 +1,5 @@
-FROM alpine:3.7
-
+FROM alpine:latest
+#FROM alpine:3.7
 ENV ANSIBLE_VERSION 2.5.0
 
 ENV BUILD_PACKAGES \
@@ -38,11 +38,11 @@ RUN set -x && \
     \
     echo "==> Adding Python runtime..."  && \
     apk add --no-cache ${BUILD_PACKAGES} && \
-    pip install --upgrade pip && \
-    pip install python-keyczar docker-py && \
+    pip install --trusted-host pypi.python.org --trusted-host files.pythonhosted.org --upgrade pip && \
+    pip install --trusted-host pypi.python.org --trusted-host files.pythonhosted.org python-keyczar docker-py PyVmomi && \
     \
     echo "==> Installing Ansible..."  && \
-    pip install ansible==${ANSIBLE_VERSION} && \
+    pip install --trusted-host pypi.python.org --trusted-host files.pythonhosted.org ansible==${ANSIBLE_VERSION} && \
     \
     echo "==> Cleaning up..."  && \
     apk del build-dependencies && \
