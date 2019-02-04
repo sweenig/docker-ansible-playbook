@@ -1,0 +1,4 @@
+function ansible-playbook {
+  $allArgs = $PsBoundParameters.values + $args
+  docker run --rm -it -v ${pwd}:/ansible/playbooks ansible $allArgs
+}
