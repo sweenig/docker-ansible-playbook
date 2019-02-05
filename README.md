@@ -53,6 +53,6 @@ Add the following lines to your Powershell profile to make a function you can ca
 ```
 function ansible-playbook {
   $allArgs = $PsBoundParameters.values + $args
-  docker run --rm -it -v ${pwd}:/ansible/playbooks ansible $allArgs
+  docker run --rm -it -v ${pwd}:/ansible/playbooks ansible-docker $allArgs
 }
 ```
