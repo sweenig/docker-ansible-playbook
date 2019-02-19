@@ -38,6 +38,7 @@ Ansible playbook variables can simply be added after the playbook name.
 ## SSH Keys
 
 If Ansible is interacting with external machines, you'll need to mount an SSH key pair for the duration of the play:
+FYI: this is for Linux. I have no idea how to get this to work on Windows.
 
 ```
 docker run --rm -it \
