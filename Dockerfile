@@ -1,6 +1,6 @@
 FROM alpine:latest
 #FROM alpine:3.7
-ENV ANSIBLE_VERSION 2.8.0
+ENV ANSIBLE_VERSION 2.9.0
 
 ENV BUILD_PACKAGES \
   bash \
