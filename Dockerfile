@@ -1,57 +1,13 @@
-FROM alpine:latest
-#FROM alpine:3.7
-ENV ANSIBLE_VERSION 2.9.0
+FROM ubuntu:19.04
 
-ENV BUILD_PACKAGES \
-  bash \
-  curl \
-  tar \
-  openssh-client \
-  sshpass \
-  git \
-  python \
-  py-boto \
-  py-dateutil \
-  py-httplib2 \
-  py-jinja2 \
-  py-paramiko \
-  py-pip \
-  py-yaml \
-  ca-certificates
-
-# If installing ansible@testing
-#RUN \
-#	echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> #/etc/apk/repositories
-
-RUN set -x && \
-    \
-    echo "==> Adding build-dependencies..."  && \
-    apk --update add --virtual build-dependencies \
-      gcc \
-      musl-dev \
-      libffi-dev \
-      openssl-dev \
-      python-dev && \
-    \
-    echo "==> Upgrading apk and system..."  && \
-    apk update && apk upgrade && \
-    \
-    echo "==> Adding Python runtime..."  && \
-    apk add --no-cache ${BUILD_PACKAGES} && \
-    pip install --trusted-host pypi.python.org --trusted-host files.pythonhosted.org --upgrade pip && \
-    pip install --trusted-host pypi.python.org --trusted-host files.pythonhosted.org python-keyczar docker-py PyVmomi && \
-    \
-    echo "==> Installing Ansible..."  && \
-    pip install --trusted-host pypi.python.org --trusted-host files.pythonhosted.org ansible==${ANSIBLE_VERSION} && \
-    \
-    echo "==> Cleaning up..."  && \
-    apk del build-dependencies && \
-    rm -rf /var/cache/apk/* && \
-    \
-    echo "==> Adding hosts for convenience..."  && \
-    mkdir -p /etc/ansible /ansible && \
-    echo "[local]" >> /etc/ansible/hosts && \
-    echo "localhost" >> /etc/ansible/hosts
+RUN apt update
+RUN apt upgrade -y
+RUN apt install software-properties-common -y
+RUN apt-add-repository ppa:ansible/ansible -y
+RUN apt update
+RUN apt install ansible -y
+RUN apt install python -y
+RUN mkdir -p /ansible/playbooks
 
 ENV ANSIBLE_GATHERING smart
 ENV ANSIBLE_HOST_KEY_CHECKING false
