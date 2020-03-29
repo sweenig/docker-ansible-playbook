@@ -11,7 +11,7 @@ docker build -t ansible-docker .
 ### Test
 
 ```
-$ docker run --name ansible-docker --rm ansible-playbook --version
+$ docker run --name ansible-docker --rm ansible-docker --version
 
 ansible-playbook 2.5.0
   config file = None
