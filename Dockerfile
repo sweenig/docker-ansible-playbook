@@ -1,13 +1,13 @@
-FROM ubuntu:19.04
+FROM ubuntu:latest
 
-RUN apt update
-RUN apt upgrade -y
-RUN apt install software-properties-common -y
-RUN apt-add-repository ppa:ansible/ansible -y
-RUN apt update
-RUN apt install ansible -y
-RUN apt install python -y
-RUN mkdir -p /ansible/playbooks
+RUN apt update && \
+apt upgrade -y && \
+apt install software-properties-common -y && \
+apt-add-repository ppa:ansible/ansible -y && \
+apt update && \
+apt install ansible -y && \
+apt install python3 -y && \
+mkdir -p /ansible/playbooks
 
 ENV ANSIBLE_GATHERING smart
 ENV ANSIBLE_HOST_KEY_CHECKING false
