@@ -1,0 +1,9 @@
+version: '3.7'
+services:
+  target_server:
+    build:
+      context: ./ubuntu_ssh
+    command: ["/usr/sbin/sshd", "-D"]
+    deploy:
+      mode: replicated
+      replicas: 4

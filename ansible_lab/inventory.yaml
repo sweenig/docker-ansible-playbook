@@ -1,0 +1,1 @@
+ansible_lab-target_server-[1:4] ansible_ssh_pass=password ansible_ssh_user=root

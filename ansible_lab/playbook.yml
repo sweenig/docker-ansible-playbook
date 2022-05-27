@@ -1,0 +1,28 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: NTP installed
+    apt:
+      name:
+      - ntpdate
+      state: latest
+      cache_valid_time: 3600
+  - name: nmap installed
+    apt:
+      name:
+      - nmap
+      state: latest
+      cache_valid_time: 3600
+  - name: nano installed
+    apt:
+      name:
+      - nano
+      state: latest
+      cache_valid_time: 3600
+  - name: python3 installed
+    apt:
+      name:
+      - python3
+      state: latest
+      cache_valid_time: 3600
