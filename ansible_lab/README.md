@@ -18,4 +18,4 @@ You can choose to build this container locally since its Dockerfile is included 
 
 Whether you pull it or build it locally, using it is the same. From the `ansible_lab` folder, execute:
 
-`docker run --rm -v ${PWD}:/ansible/playbooks --network=ansible_lab_default sweenig/ansible-docker playbook.yml -i inventory.yaml`
+`docker run --rm -v ${PWD}:/ansible/playbooks --network=ansible_lab_default sweenig/ansible-docker playbook.yml -i inventory`
