@@ -1,0 +1,39 @@
+> docker run --rm -v ${PWD}:/ansible/playbooks --network=ansible_lab_default sweenig/ansible-docker playbook.yml -i inventory
+
+PLAY [all] *********************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [ansible_lab-target_server-2]
+ok: [ansible_lab-target_server-1]
+ok: [ansible_lab-target_server-3]
+ok: [ansible_lab-target_server-4]
+
+TASK [NTP installed] ***********************************************************
+changed: [ansible_lab-target_server-2]
+changed: [ansible_lab-target_server-1]
+changed: [ansible_lab-target_server-3]
+changed: [ansible_lab-target_server-4]
+
+TASK [nmap installed] **********************************************************
+changed: [ansible_lab-target_server-3]
+changed: [ansible_lab-target_server-1]
+changed: [ansible_lab-target_server-2]
+changed: [ansible_lab-target_server-4]
+
+TASK [nano installed] **********************************************************
+changed: [ansible_lab-target_server-4]
+changed: [ansible_lab-target_server-3]
+changed: [ansible_lab-target_server-2]
+changed: [ansible_lab-target_server-1]
+
+TASK [python3 installed] *******************************************************
+ok: [ansible_lab-target_server-3]
+ok: [ansible_lab-target_server-1]
+ok: [ansible_lab-target_server-2]
+ok: [ansible_lab-target_server-4]
+
+PLAY RECAP *********************************************************************
+ansible_lab-target_server-1 : ok=5    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+ansible_lab-target_server-2 : ok=5    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+ansible_lab-target_server-3 : ok=5    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+ansible_lab-target_server-4 : ok=5    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
