@@ -6,7 +6,8 @@ apt install software-properties-common -y && \
 apt-add-repository ppa:ansible/ansible -y && \
 apt update && \
 apt install ansible -y && \
-apt install python3 -y && \
+apt install python3 python-is-python3 python3-pip -y && \
+pip install ansible-pylibssh --break-system-packages && \
 mkdir -p /ansible/playbooks
 
 ENV ANSIBLE_GATHERING smart
