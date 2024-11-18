@@ -5,6 +5,20 @@ This lab is designed to run completely in docker. There are two parts to the lab
 1. The target server(s) that our Ansible playbook will be inspecting
 2. The server running our Ansible playbook
 
+# Downloading these files
+
+You can use Git to download this entire repository to your local computer. In a terminal in a folder where you want to download the files:
+
+Windows
+
+`docker run -it --rm -v ${HOME}:/root -v ${PWD}:/git alpine/git clone https://github.com/sweenig/docker-ansible-playbook.git`
+
+Linux/Mac is just as easy:
+
+`docker run -it --rm -v ${HOME}:/root -v $(pwd):/git alpine/git clone https://github.com/sweenig/docker-ansible-playbook.git`
+
+This will create a folder called `docker-ansible-playbook` containing all the files from this repository. 
+
 # Target Server(s)
 
 Our target servers are simply Ubuntu servers, running an OpenSSH daemon. You can have one or more of these servers running. Just change the `replicas` line in the [docker-compose.yml](./docker-compose.yml) file and update the [inventory file](./inventory.yaml) to match.
