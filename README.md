@@ -4,13 +4,13 @@ Docker Image of Ansible for executing ansible-playbook command against an extern
 
 ## Build
 
-```
+```bash
 docker build -t ansible-docker .
 ```
 
 ### Test
 
-```
+```bash
 $ docker run --name ansible-docker --rm ansible-docker --version
 
 ansible-playbook 2.5.0
@@ -23,13 +23,13 @@ ansible-playbook 2.5.0
 
 ## Running Ansible Playbook
 
-```
+```bash
 docker run --rm -it -v PATH_TO_LOCAL_PLAYBOOKS_DIR:/ansible/playbooks ansible-docker PLAYBOOK_FILE
 ```
 
 For example, assuming your project's structure follows [best practices](http://docs.ansible.com/ansible/playbooks_best_practices.html#directory-layout), the command to run ansible-playbook from the top-level directory would look like:
 
-```
+```bash
 docker run --rm -it -v $(pwd):/ansible/playbooks ansible-docker site.yml
 ```
 
@@ -40,7 +40,7 @@ Ansible playbook variables can simply be added after the playbook name.
 If Ansible is interacting with external machines, you'll need to mount an SSH key pair for the duration of the play:
 FYI: this is for Linux. I have no idea how to get this to work on Windows.
 
-```
+```bash
 docker run --rm -it \
     -v ~/.ssh/id_rsa:/root/.ssh/id_rsa \
     -v ~/.ssh/id_rsa.pub:/root/.ssh/id_rsa.pub \
@@ -49,9 +49,10 @@ docker run --rm -it \
 ```
 
 ## Running in Windows
+
 Add the following lines to your Powershell profile to make a function you can call directly:
 
-```
+```powershell
 function ansible-playbook {
   $allArgs = $PsBoundParameters.values + $args
   docker run --rm -it -v ${pwd}:/ansible/playbooks ansible-docker $allArgs
