@@ -29,6 +29,8 @@ Our target servers are simply Ubuntu servers, running an OpenSSH daemon. You can
 
 To launch the target servers, simply navigate to the `ansible_lab` folder and execute `docker-compose up -d`
 
+If you have issues running `docker-compose` replace the - with a space like this: `docker compose up -d`
+
 ## Ansible Playbook Runner
 
 You can choose to build this container locally since its Dockerfile is included in this repo, or you can just `docker pull sweenig/ansible-docker`. If you choose to build it locally, run the following from the `ansible_lab` folder:
