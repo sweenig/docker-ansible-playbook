@@ -11,7 +11,7 @@ RUN apt update && \
 COPY requirements.txt ./requirements.txt
 COPY galaxy.yml ./galaxy.yml
 
-RUN pip install --no-cache-dir -r requirements.txt --break-system-packages && \
+RUN pip install --no-cache-dir --upgrade --break-system-packages -r requirements.txt && \
     mkdir -p /ansible/playbooks
 
 ENV ANSIBLE_GATHERING smart
