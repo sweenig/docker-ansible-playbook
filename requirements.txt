@@ -2,3 +2,5 @@ ansible-pylibssh
 python-tss-sdk
 pan-python
 pan-os-python
+pyvmomi
+requests
