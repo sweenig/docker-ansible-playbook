@@ -14,14 +14,14 @@ COPY galaxy.yml ./galaxy.yml
 RUN pip install --no-cache-dir --upgrade --break-system-packages -r requirements.txt && \
     mkdir -p /ansible/playbooks
 
-ENV ANSIBLE_GATHERING smart
-ENV ANSIBLE_HOST_KEY_CHECKING false
-ENV ANSIBLE_RETRY_FILES_ENABLED false
-ENV ANSIBLE_ROLES_PATH /ansible/playbooks/roles
-ENV ANSIBLE_SSH_PIPELINING True
-ENV PYTHONPATH /ansible/lib
-ENV PATH /ansible/bin:$PATH
-ENV ANSIBLE_LIBRARY /ansible/library
+ENV ANSIBLE_GATHERING=smart
+ENV ANSIBLE_HOST_KEY_CHECKING=false
+ENV ANSIBLE_RETRY_FILES_ENABLED=false
+ENV ANSIBLE_ROLES_PATH=/ansible/playbooks/roles
+ENV ANSIBLE_SSH_PIPELINING=True
+ENV PYTHONPATH=/ansible/lib
+ENV PATH=/ansible/bin:$PATH
+ENV ANSIBLE_LIBRARY=/ansible/library
 
 RUN ansible-galaxy collection install --requirements-file galaxy.yml
 
