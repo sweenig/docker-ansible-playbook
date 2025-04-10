@@ -3,3 +3,4 @@ collections:
   - paloaltonetworks.panos
   - community.vmware
   - cisco.meraki
+  - cisco.cml
