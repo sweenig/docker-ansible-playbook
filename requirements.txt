@@ -4,4 +4,3 @@ pan-python
 pan-os-python
 pyvmomi
 requests
-meraki
