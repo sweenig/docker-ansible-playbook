@@ -1,5 +1,7 @@
 FROM ubuntu:latest
 
+WORKDIR /ansible/playbooks
+
 COPY requirements.txt ./requirements.txt
 COPY galaxy.yml ./galaxy.yml
 
@@ -18,11 +20,9 @@ RUN apt update && \
     apt-add-repository ppa:ansible/ansible -y && \
     apt update && \
     apt install ansible -y && \
-    apt install python3 python-is-python3 python3-pip -y \
-    pip install --no-cache-dir --upgrade --break-system-packages -r requirements.txt && \
-    mkdir -p /ansible/playbooks \
+    apt install python3 python-is-python3 python3-pip -y && \
+    pip install --no-cache-dir --break-system-packages -r requirements.txt && \
+    pip install --no-cache-dir --break-system-packages --no-deps meraki && \
     ansible-galaxy collection install --requirements-file galaxy.yml
-
-WORKDIR /ansible/playbooks
 
 ENTRYPOINT ["ansible-playbook"]
